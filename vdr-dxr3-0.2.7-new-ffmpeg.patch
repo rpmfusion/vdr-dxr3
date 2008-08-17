@@ -1,11 +1,6 @@
-Index: dxr3ffmpeg.c
-===================================================================
-RCS file: /cvsroot/dxr3plugin/dxr3/dxr3ffmpeg.c,v
-retrieving revision 1.2.2.10
-retrieving revision 1.2.2.12
-diff -u -r1.2.2.10 -r1.2.2.12
---- dxr3ffmpeg.c	7 Jan 2007 21:59:01 -0000	1.2.2.10
-+++ dxr3ffmpeg.c	13 Aug 2007 08:10:04 -0000	1.2.2.12
+diff -ruN dxr3-0.2.7.orig/dxr3ffmpeg.c dxr3-0.2.7/dxr3ffmpeg.c
+--- dxr3-0.2.7.orig/dxr3ffmpeg.c	2007-01-07 22:57:12.000000000 +0100
++++ dxr3-0.2.7/dxr3ffmpeg.c	2008-08-11 18:40:28.000000000 +0200
 @@ -28,8 +28,10 @@
  cDxr3Ffmpeg::cDxr3Ffmpeg()
  {
@@ -19,3 +14,15 @@ diff -u -r1.2.2.10 -r1.2.2.12
  }
  
  // ==================================
+diff -ruN dxr3-0.2.7.orig/dxr3ffmpeg.h dxr3-0.2.7/dxr3ffmpeg.h
+--- dxr3-0.2.7.orig/dxr3ffmpeg.h	2007-01-07 22:57:14.000000000 +0100
++++ dxr3-0.2.7/dxr3ffmpeg.h	2008-08-11 18:54:50.000000000 +0200
+@@ -24,7 +24,7 @@
+ 
+ extern "C"
+ {
+-#include <avcodec.h>
++#include <libavcodec/avcodec.h>
+ }
+ 
+ #include <string.h>

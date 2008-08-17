@@ -4,7 +4,7 @@
 
 Name:           vdr-%{pname}
 Version:        0.2.7
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Hollywood+/DXR3 output plugin for VDR
 
 Group:          Applications/Multimedia
@@ -29,7 +29,7 @@ primary output device.
 
 %prep
 %setup -q -n %{pname}-%{version}
-%patch0
+%patch0 -p1
 for f in CONTRIBUTORS HISTORY TROUBLESHOOTING ; do
   iconv -f iso-8859-1 -t utf-8 $f > $f.utf-8 ; mv $f.utf-8 $f
 done
@@ -63,6 +63,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Aug 11 2008 Felix Kaechele <felix at fetzig dot org> - 0.2.7-4
+- updated patch to new ffmpeg
+
 * Mon Aug 04 2008 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info - 0.2.7-3
 - rebuild
 
