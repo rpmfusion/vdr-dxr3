@@ -4,7 +4,7 @@
 
 Name:           vdr-%{pname}
 Version:        0.2.8
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Hollywood+/DXR3 output plugin for VDR
 
 Group:          Applications/Multimedia
@@ -60,6 +60,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 0.2.8-4
+- rebuild for new F11 features
+
 * Sat Dec 20 2008 Dominik Mierzejewski <rpm@greysector.net> - 0.2.8-3
 - rebuild against new ffmpeg
 
