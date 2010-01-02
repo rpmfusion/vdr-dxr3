@@ -4,7 +4,7 @@
 
 Name:           vdr-%{pname}
 Version:        0.2.10
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Hollywood+/DXR3 output plugin for VDR
 
 Group:          Applications/Multimedia
@@ -17,6 +17,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  vdr-devel >= 1.4.0
 BuildRequires:  em8300-devel
 BuildRequires:  ffmpeg-devel
+BuildRequires:  gettext
 Requires:       vdr(abi) = %{apiver}
 Requires:       em8300-kmod >= 0.15.2
 
@@ -65,6 +66,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Jan 02 2010 Felix Kaechele <felix@fetzig.org> - 0.2.10-2
+- added missing BuildReq: gettext
+
 * Sat Jan 02 2010 Felix Kaechele <heffer@fedoraproject.org> - 0.2.10-1
 - new upstream release
 
