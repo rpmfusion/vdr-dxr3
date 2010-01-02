@@ -3,14 +3,14 @@
 %define apiver    %(vdr-config --apiversion 2>/dev/null || echo ERROR)
 
 Name:           vdr-%{pname}
-Version:        0.2.8
-Release:        4%{?dist}
+Version:        0.2.10
+Release:        1%{?dist}
 Summary:        Hollywood+/DXR3 output plugin for VDR
 
 Group:          Applications/Multimedia
 License:        GPLv2+
-URL:            http://sourceforge.net/projects/dxr3plugin
-Source0:        http://downloads.sourceforge.net/dxr3plugin/%{name}-%{version}.tgz
+URL:            http://projects.vdr-developer.org/projects/show/plg-dxr3
+Source0:        http://projects.vdr-developer.org/attachments/download/162/%{name}-%{version}.tgz
 Source1:        %{name}.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -37,22 +37,27 @@ sed -i -e /-DUSE_XINE_SCALER/d Makefile
 
 %build
 make %{?_smp_mflags} LIBDIR=. VDRDIR=%{_libdir}/vdr \
-  FFMDIR=%{_includedir}/ffmpeg
+  FFMDIR=%{_includedir}/ffmpeg LOCALEDIR=%{_tmppath}/%{name}-tmp
 
 
 %install
 rm -rf $RPM_BUILD_ROOT
+make i18n LOCALEDIR=$RPM_BUILD_ROOT%{_libdir}/vdr/locale
 install -dm 755 $RPM_BUILD_ROOT%{plugindir}
 install -pm 755 libvdr-%{pname}.so.%{apiver} $RPM_BUILD_ROOT%{plugindir}
 install -Dpm 644 %{SOURCE1} \
   $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/vdr-plugins.d/%{pname}.conf
+for l in ca_ES de_DE es_ES fi_FI it_IT pl_PL ; do
+  lshort=`echo $l | cut -c -2`
+  echo "%lang($lshort) %{_libdir}/vdr/locale/$l/LC_MESSAGES/%{name}.mo" >> %{name}.lang
+done
 
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 
-%files
+%files -f %{name}.lang
 %defattr(-,root,root,-)
 %doc CONTRIBUTORS COPYING HISTORY README TROUBLESHOOTING
 %config(noreplace) %{_sysconfdir}/sysconfig/vdr-plugins.d/%{pname}.conf
@@ -60,6 +65,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Jan 02 2010 Felix Kaechele <heffer@fedoraproject.org> - 0.2.10-1
+- new upstream release
+
 * Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 0.2.8-4
 - rebuild for new F11 features
 
