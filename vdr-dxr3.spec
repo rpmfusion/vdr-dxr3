@@ -4,7 +4,7 @@
 
 Name:           vdr-%{pname}
 Version:        0.2.10
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Hollywood+/DXR3 output plugin for VDR
 
 Group:          Applications/Multimedia
@@ -65,6 +65,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Sep 26 2011 Nicolas Chauvet <kwizart@gmail.com> - 0.2.10-4
+- Rebuilt for FFmpeg-0.8
+
 * Mon Jan  4 2010 Ville Skyttä <ville.skytta@iki.fi> - 0.2.10-3
 - Use ISA qualified dependency to vdr(abi).
 - Filter out autoprovided libvdr-*.so.* (if %%filter_setup is available).
