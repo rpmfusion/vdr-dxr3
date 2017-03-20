@@ -4,7 +4,7 @@
 
 Name:           vdr-%{pname}
 Version:        0.2.10
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Hollywood+/DXR3 output plugin for VDR
 
 Group:          Applications/Multimedia
@@ -65,6 +65,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Mar 20 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 0.2.10-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
 * Mon Sep 26 2011 Nicolas Chauvet <kwizart@gmail.com> - 0.2.10-4
 - Rebuilt for FFmpeg-0.8
 
